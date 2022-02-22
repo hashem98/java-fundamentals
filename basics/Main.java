@@ -20,7 +20,7 @@ public class Main {
 
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
-        flipHeads(1);
+        flipHeads(10);
         clock();
 
     }
@@ -40,22 +40,23 @@ public class Main {
         }}
     public static void flipHeads (int n){
         Random random = new Random();
-        int counter=0 , flips=0;
+        int counter=0 , hFlips=0 ,tFlips=0;
         while(counter<n)
         {
             double randomNum = random.nextDouble();
             if(randomNum<0.5)
             {
                 System.out.println("tails");
-                flips++;
+                tFlips++;
+                counter++;
             }
             else
             {
                 System.out.println("heads");
                 counter++;
-                flips++;
+                hFlips++;
             }
         }
-        System.out.println("It took "+flips+" flips to flip "+n+" head in a row.");
+        System.out.println("It took "+n+" flips to flip "+hFlips+" head in a row.");
     }
 }
