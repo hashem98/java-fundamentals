@@ -26,18 +26,22 @@ public class Main {
     }
 
 
-    public static void clock(){
-        while (true){
+    public static void clock() {
+        String firstTime = "" ;
+        int million = 1_000_000;
+        double counter = 0;
+
+        while(true){
+            counter++;
             LocalDateTime now = LocalDateTime.now();
-            int hour = now.getHour();
-            int minute = now.getMinute();
-            int second = now.getSecond();
-            String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-            while (second==LocalDateTime.now().getSecond()){
-                continue;
+            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            if(!currentTime.equals(firstTime)){
+                firstTime = currentTime;
+                System.out.println(firstTime + " " +counter/million +" MHz" );
+                counter = 0;
             }
-            System.out.println(time);
-        }}
+        }
+    }
     public static void flipHeads (int n){
         Random random = new Random();
         int counter=0 , hFlips=0 ,tFlips=0;
