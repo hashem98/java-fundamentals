@@ -20,7 +20,7 @@ public class App {
 
         int[] randomRoll = roll(6);
         boolean findDublicate = containsDuplicates(testArr);
-        int avg = calculateAverage(testArr);
+        double avg = calculateAverage(testArr);
         int[] arrayOfAvg = avgArrOfArr(weeklyMonthTemperatures);
         System.out.println("................arrayOfAvg...............");
         for (int j = 0; j <arrayOfAvg.length ; j++) {
@@ -67,21 +67,41 @@ public class App {
         return flag;
     }
 
-    public static int calculateAverage(int[] arr) {
+    public static double calculateAverage(int[] arr) {
         int sum = 0;
         for (int elemnt : arr
         ) {
             sum += elemnt;
         }
-        return Math.floorDiv(sum, arr.length);
+        return sum/arr.length;
     }
 
-    public static int[] avgArrOfArr(int[][] arr){
-        int[] newArr = new int[arr.length];
-        for (int index = 0 ; index < arr.length ; index++) {
-            newArr[index] = calculateAverage(arr[index]);
+    public static int[] avgArrOfArr(int[][] array){
+        int sum = 0;
+        float prevAvg;
+        float avg = 0;
+        int requiredIndex = 0;
+
+
+        for (int i = 0; i < array.length; i++) {
+            // reassigning the variables
+            prevAvg = avg;
+            sum = 0;
+
+            // a loop to get the avg
+            for (int j = 0; j < array[i].length; j++) {
+                sum = sum + array[i][j];
+            }
+            avg = (float) sum / array[i].length;
+
+            // if the new average less than the previous average , replace the index
+            if (avg < prevAvg) {
+                requiredIndex = i;
+            }
+
         }
-        return newArr;
+
+        return array[requiredIndex];
     }
     public  HashSet AnalyzingWeatherData(int[][] arr){
         int maxValue = 0;
