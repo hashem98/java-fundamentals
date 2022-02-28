@@ -16,7 +16,7 @@ class AppTest {
     void calculateAverage() {
 
         int[] arr = {1, 2, 3};
-        int testResult = App.calculateAverage(arr);
+        double testResult = App.calculateAverage(arr);
         assertEquals(2, testResult);
     }
 
@@ -27,7 +27,7 @@ class AppTest {
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}};
         int[] testResult = App.avgArrOfArr(arr);
-        int[] testExpec = {63, 63, 57, 57};
+        int[] testExpec = {55, 54, 60, 53, 59, 57, 61};
         assertArrayEquals(testExpec, testResult);
 
     }
