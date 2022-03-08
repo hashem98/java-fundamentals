@@ -5,7 +5,8 @@ package inheritance;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 // Class Restaurant constructor test
     class RestaurantTest {
@@ -49,7 +50,44 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
     }
+// test shop constructor
+class shopTest {
+    @Test
+    void shopToStringTest() {
+        Shop shopTest = new Shop("PizzaHut", "Bad", 3);
+        assertEquals(shopTest.toString(), "the review to PizzaHut is Bad");
+    }
+}
 
+// add review to shop test
+class addReviewShopTest{
+    @Test
+    void addTest() {
+        Shop revTest = new Shop("Popeyes","Hashem", 2);
+        revTest.addReview("g", "Hashem", 4);
+        revTest.addReview("a", "Hashem", 5);
+        revTest.addReview("Bad", "Hashem", 3);
+        assertEquals(revTest.getShopRating(), (4));
+    }
+}
+class addReviewTheaterTest{
+    @Test
+    void addTest() {
+        ArrayList movies = new ArrayList();
+        movies.add("the GodFather");
+        movies.add("requiem for a dream");
+        Theater revTest = new Theater("Cinema",movies);
+        revTest.addReview("Bad", "Hashem", 3);
+        revTest.addReview("a", "Hashem", 5);
+        revTest.addReview("g", "Hashem", 4);
+        revTest.addMovie("taxi driver");
+        ArrayList<String> y = new ArrayList<>();
+        y.add("the GodFather");
+        y.add("requiem for a dream");
+        y.add("taxi driver");
+        assertEquals(revTest.getMovies(), y);
+    }
+}
 
 
 
